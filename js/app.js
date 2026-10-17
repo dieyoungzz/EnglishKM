@@ -22,7 +22,7 @@
   var ALL = {
     id: "all",
     title: "Все слова",
-    subtitle: "три набора вместе",
+    subtitle: "Три набора вместе",
     cards: SETS.reduce(function (acc, s) { return acc.concat(s.cards); }, [])
   };
   function findSet(id) {
