@@ -129,7 +129,52 @@
           '<span class="set-arrow">›</span>' +
           "</a>";
       }).join("") +
+      "</div>" +
+      '<h2 class="section">Предложения</h2>' +
+      '<div class="sets">' +
+      TOPICS.map(function (t) {
+        return '<a class="set-card" href="#/topic/' + t.id + '">' +
+          '<div class="set-main"><h2>' + esc(t.title) + "</h2>" +
+          '<div class="muted">' + t.sentences.length + " предложений · " + esc(t.subtitle) + "</div></div>" +
+          '<span class="set-arrow">›</span>' +
+          "</a>";
+      }).join("") +
       "</div>";
+  }
+
+  // ---------- тема с предложениями ----------
+  // **слово** в тексте предложения -> <b>слово</b>
+  function boldify(s) {
+    return esc(s).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>");
+  }
+  function renderTopic(topic) {
+    app.innerHTML = '<a href="#/">← На главную</a>' +
+      "<h1>" + esc(topic.title) + "</h1>" +
+      '<p class="muted">' + esc(topic.subtitle) + ". Причастия выделены жирным, нажмите на предложение, чтобы увидеть перевод и разбор.</p>" +
+      '<div class="opts"><button class="chip" id="toggleAll" type="button">Развернуть все</button></div>' +
+      '<ol class="sentences">' +
+      topic.sentences.map(function (s) {
+        return '<li><details class="sentence"><summary>' + boldify(s.en) + "</summary>" +
+          '<div class="tr">' + esc(s.ru) + "</div>" +
+          '<div class="analysis">' + s.notes.map(function (n) {
+            return '<div class="note"><b>' + esc(n.w) + "</b> — " + esc(n.type) +
+              '<div class="muted">' + esc(n.func) + ". Перевод: «" + esc(n.ru) + "»</div></div>";
+          }).join("") + "</div>" +
+          "</details></li>";
+      }).join("") +
+      "</ol>";
+    var btn = app.querySelector("#toggleAll");
+    btn.addEventListener("click", function () {
+      var all = app.querySelectorAll("details.sentence");
+      var open = btn.textContent === "Развернуть все";
+      all.forEach(function (d) { d.open = open; });
+      btn.textContent = open ? "Свернуть все" : "Развернуть все";
+    });
+    return null;
+  }
+  function findTopic(id) {
+    for (var i = 0; i < TOPICS.length; i++) if (TOPICS[i].id === id) return TOPICS[i];
+    return null;
   }
 
   // ---------- шапка набора ----------
@@ -497,7 +542,12 @@
     if (cleanup) { cleanup(); cleanup = null; }
     var m = location.hash.match(/^#\/set\/([\w-]+)\/(\w+)/);
     var set = m && findSet(m[1]);
-    if (set && RENDER[m[2]]) {
+    var t = location.hash.match(/^#\/topic\/([\w-]+)/);
+    var topic = t && findTopic(t[1]);
+    if (topic) {
+      document.title = topic.title + " — Technical English";
+      cleanup = renderTopic(topic);
+    } else if (set && RENDER[m[2]]) {
       document.title = set.title + " — Technical English";
       cleanup = RENDER[m[2]](set);
     } else {
