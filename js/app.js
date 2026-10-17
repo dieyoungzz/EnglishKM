@@ -116,17 +116,17 @@
     var all = [ALL].concat(SETS);
     app.innerHTML =
       "<h1>Технический английский</h1>" +
-      '<p class="muted">Карточки «слово — перевод» для подготовки к экзамену. Выберите набор.</p>' +
       '<div class="sets">' +
       all.map(function (s) {
         var cards = cardsOf(s);
         var k = knownCount(cards);
         var pct = cards.length ? Math.round(k / cards.length * 100) : 0;
         return '<a class="set-card" href="#/set/' + s.id + '/cards">' +
-          "<h2>" + esc(s.title) + "</h2>" +
-          '<div class="muted">' + cards.length + " слов · " + esc(s.subtitle) + "</div>" +
-          '<div class="bar"><i style="width:' + pct + '%"></i></div>' +
-          '<div class="muted" style="font-size:.85rem;margin-top:6px">Выучено: ' + k + " из " + cards.length + "</div>" +
+          '<div class="set-main"><h2>' + esc(s.title) + "</h2>" +
+          '<div class="muted">' + cards.length + " слов · " + esc(s.subtitle) + "</div></div>" +
+          '<div class="set-progress"><div class="muted">Выучено ' + k + " из " + cards.length + "</div>" +
+          '<div class="bar"><i style="width:' + pct + '%"></i></div></div>' +
+          '<span class="set-arrow">›</span>' +
           "</a>";
       }).join("") +
       "</div>";

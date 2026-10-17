@@ -58,14 +58,18 @@ h1 { font-size: 1.6rem; margin: 8px 0 4px; }
 .muted { color: var(--muted); }
 
 /* Главная */
-.sets { display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); margin-top: 18px; }
+.sets { display: flex; flex-direction: column; gap: 12px; margin-top: 18px; }
 .set-card {
-  display: block; background: var(--surface); border-radius: 12px; padding: 18px;
-  box-shadow: var(--shadow); color: var(--text); border-bottom: 4px solid transparent;
+  display: flex; align-items: center; gap: 20px; background: var(--surface); border-radius: 12px;
+  padding: 18px 20px; box-shadow: var(--shadow); color: var(--text);
+  border-left: 4px solid transparent; transition: border-color .15s, transform .15s;
 }
-.set-card:hover { border-bottom-color: var(--accent); }
-.set-card h2 { margin: 0 0 4px; font-size: 1.2rem; }
-.bar { height: 6px; background: var(--line); border-radius: 3px; overflow: hidden; margin-top: 12px; }
+.set-card:hover { border-left-color: var(--accent); transform: translateX(2px); }
+.set-card h2 { margin: 0 0 2px; font-size: 1.2rem; }
+.set-main { flex: 1; min-width: 0; }
+.set-progress { width: 180px; flex-shrink: 0; font-size: .85rem; }
+.set-arrow { font-size: 1.8rem; color: var(--muted); line-height: 1; }
+.bar { height: 6px; background: var(--line); border-radius: 3px; overflow: hidden; margin-top: 6px; }
 .bar > i { display: block; height: 100%; background: var(--good); }
 
 /* Режимы */
@@ -166,6 +170,9 @@ input.answer:focus { outline: none; border-color: var(--accent); }
 .done .score { font-size: 3rem; font-weight: 800; color: var(--accent); }
 
 @media (max-width: 560px) {
+  .set-card { flex-wrap: wrap; gap: 10px; }
+  .set-main { flex-basis: calc(100% - 40px); }
+  .set-progress { width: 100%; order: 3; }
   .item { grid-template-columns: 1fr; gap: 4px; }
   .item .ex { margin-top: 0; }
   .flash { min-height: 260px; }
