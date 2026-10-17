@@ -194,21 +194,12 @@
       }
 
       var c = order[i];
-      var frontMeta = prefs.dir === "en-ru" ? [c.ipa, c.pos].filter(Boolean).join(" ") : "";
-      var backMeta = prefs.dir === "ru-en" ? [c.ipa, c.pos].filter(Boolean).join(" ") : "";
       html +=
         '<div class="stats"><span class="l">Учу: ' + (deck.length - k) + '</span><span class="k">Знаю: ' + k + "</span></div>" +
         '<div class="scene"><button class="flash' + (flipped ? " flipped" : "") + '" data-a="flip" type="button" aria-label="Перевернуть карточку">' +
-        '<div class="face front">' +
-        (c.extra ? '<span class="tag">глоссарий</span>' : "") +
-        '<div class="big">' + esc(front(c)) + "</div>" +
-        (frontMeta ? '<div class="meta">' + esc(frontMeta) + "</div>" : "") +
-        '<span class="hint">нажмите или пробел — перевернуть</span></div>' +
-        '<div class="face back">' +
-        '<div class="big">' + esc(back(c)) + "</div>" +
-        (backMeta ? '<div class="meta">' + esc(backMeta) + "</div>" : "") +
-        (c.ex ? '<div class="ex">' + esc(c.ex) + "</div>" : "") +
-        "</div></button></div>" +
+        '<div class="face front"><div class="big">' + esc(front(c)) + "</div></div>" +
+        '<div class="face back"><div class="big">' + esc(back(c)) + "</div></div>" +
+        "</button></div>" +
         '<div class="controls">' +
         '<button class="round" data-a="prev" type="button" aria-label="Назад">←</button>' +
         '<span class="counter">' + (i + 1) + " / " + order.length + "</span>" +
@@ -218,8 +209,7 @@
         '<div class="controls">' +
         '<button class="btn bad" data-a="learning" type="button">✗ Ещё учу</button>' +
         '<button class="btn good" data-a="know" type="button">✓ Знаю</button>' +
-        "</div>" +
-        '<p class="muted" style="text-align:center;font-size:.85rem">Клавиши: ← → листать, пробел — перевернуть, 1 — ещё учу, 2 — знаю</p>';
+        "</div>";
       app.innerHTML = html;
       bind();
     }
@@ -492,13 +482,9 @@
   function renderList(set) {
     var deck = cardsOf(set);
     app.innerHTML = header(set, "list") +
-      '<p class="muted">Зелёная точка — слово отмечено как выученное.</p>' +
       '<div class="list">' + deck.map(function (c) {
-        return '<div class="item"><span class="t"><span class="dot' + (known[c.id] ? " k" : "") + '"></span>' + esc(c.term) +
-          (c.ipa ? ' <span class="muted">' + esc(c.ipa) + "</span>" : "") +
-          (c.pos ? ' <i class="muted">(' + esc(c.pos) + ")</i>" : "") + "</span>" +
-          "<span>" + esc(c.ru) + "</span>" +
-          (c.ex ? '<span class="ex">' + esc(c.ex) + "</span>" : "") + "</div>";
+        return '<div class="item"><span class="t"><span class="dot' + (known[c.id] ? " k" : "") + '"></span>' + esc(c.term) + "</span>" +
+          "<span>" + esc(c.ru) + "</span></div>";
       }).join("") + "</div>";
     bindOpts();
     return null;
