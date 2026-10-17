@@ -47,7 +47,7 @@ window.TOPICS = [
         ]
       },
       {
-        en: "The results of the experiments **discussed** yesterday **will be published**.",
+        en: "The results of the experiments **discussed** yesterday will be **published**.",
         ru: "Результаты экспериментов, обсуждённых вчера, будут опубликованы.",
         notes: [
           { w: "discussed", type: P2, func: POST, ru: "обсуждённых" },
@@ -85,7 +85,7 @@ window.TOPICS = [
         notes: [{ w: "weighed", type: P2, func: POST, ru: "взвешенный" }]
       },
       {
-        en: "The number of specialists **connected** with new branches of science and engineering **is increasing**.",
+        en: "The number of specialists **connected** with new branches of science and engineering is **increasing**.",
         ru: "Число специалистов, связанных с новыми отраслями науки и техники, растёт.",
         notes: [
           { w: "connected", type: P2, func: POST, ru: "связанных" },
@@ -116,7 +116,7 @@ window.TOPICS = [
         notes: [{ w: "produced", type: P2, func: POST, ru: "вырабатываемая" }]
       },
       {
-        en: "Modern theories of magnetism assume that a magnetic field **is produced** by an electric charge **being** in motion.",
+        en: "Modern theories of magnetism assume that a magnetic field is **produced** by an electric charge **being** in motion.",
         ru: "Современные теории магнетизма предполагают, что магнитное поле создаётся электрическим зарядом, находящимся в движении.",
         notes: [
           { w: "is produced", type: P2 + " в составе Present Simple Passive", func: PASSIVE, ru: "создаётся" },
@@ -140,7 +140,7 @@ window.TOPICS = [
         ]
       },
       {
-        en: "The quantity of solar radiation **received** by the Earth's atmosphere on a unit of surface in a unit of time **is called** the solar constant.",
+        en: "The quantity of solar radiation **received** by the Earth's atmosphere on a unit of surface in a unit of time is **called** the solar constant.",
         ru: "Количество солнечного излучения, получаемого атмосферой Земли на единицу поверхности за единицу времени, называется солнечной постоянной.",
         notes: [
           { w: "received", type: P2, func: POST, ru: "получаемого" },
@@ -161,7 +161,7 @@ window.TOPICS = [
         ]
       },
       {
-        en: "A thermodynamic system **defined** as a body or a group of bodies **receiving** or **giving out** heat or other forms of energy **is described** by the pressure, the temperature and the volume.",
+        en: "A thermodynamic system **defined** as a body or a group of bodies **receiving** or **giving out** heat or other forms of energy is **described** by the pressure, the temperature and the volume.",
         ru: "Термодинамическая система, определяемая как тело или группа тел, получающих или отдающих тепло или другие виды энергии, описывается давлением, температурой и объёмом.",
         notes: [
           { w: "defined", type: P2, func: POST, ru: "определяемая" },
