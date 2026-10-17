@@ -178,3 +178,28 @@ input.answer:focus { outline: none; border-color: var(--accent); }
   .flash { min-height: 260px; }
   .q { font-size: 1.25rem; }
 }
+
+/* Темы с предложениями */
+h2.section { font-size: 1.2rem; margin: 28px 0 0; }
+.sentences { list-style: none; counter-reset: s; padding: 0; margin: 0; display: grid; gap: 10px; }
+.sentences li { counter-increment: s; }
+.sentence {
+  background: var(--surface); border-radius: 12px; box-shadow: var(--shadow);
+  border-left: 4px solid transparent;
+}
+.sentence[open] { border-left-color: var(--accent); }
+.sentence summary {
+  list-style: none; cursor: pointer; padding: 14px 44px 14px 16px; position: relative; line-height: 1.55;
+}
+.sentence summary::-webkit-details-marker { display: none; }
+.sentence summary::before { content: counter(s) ". "; color: var(--muted); font-weight: 600; }
+.sentence summary::after {
+  content: "›"; position: absolute; right: 16px; top: 12px; font-size: 1.4rem; color: var(--muted);
+  transition: transform .2s;
+}
+.sentence[open] summary::after { transform: rotate(90deg); }
+.sentence summary b { color: var(--accent); }
+.sentence .tr { padding: 0 16px 12px; border-top: 1px solid var(--line); padding-top: 12px; margin: 0 16px 0; padding-left: 0; padding-right: 0; }
+.sentence .analysis { display: grid; gap: 8px; padding: 0 16px 16px; }
+.sentence .note { background: var(--bg); border-radius: 8px; padding: 10px 12px; font-size: .95rem; }
+.sentence .note .muted { font-size: .9rem; margin-top: 2px; }
