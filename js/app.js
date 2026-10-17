@@ -22,7 +22,7 @@
   var ALL = {
     id: "all",
     title: "Все слова",
-    subtitle: "Три набора вместе",
+    subtitle: "Три юнита вместе",
     cards: SETS.reduce(function (acc, s) { return acc.concat(s.cards); }, [])
   };
   function findSet(id) {
@@ -141,7 +141,7 @@
     ["list", "Список"]
   ];
   function header(set, mode) {
-    return '<a href="#/">← Все наборы</a>' +
+    return '<a href="#/">← All units</a>' +
       "<h1>" + esc(set.title) + "</h1>" +
       '<div class="modes">' +
       MODES.map(function (m) {
