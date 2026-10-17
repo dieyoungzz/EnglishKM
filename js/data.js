@@ -3,7 +3,7 @@
 window.SETS = [
   {
     id: "set1",
-    title: "Unit 4",
+    title: "Слова Unit 4",
     subtitle: "relate, measure, friction…",
     cards: [
       { term: "Relate", pos: "v.", ru: "Иметь отношение, быть связанным", ex: "You should relate events to probable causes." },
@@ -33,7 +33,7 @@ window.SETS = [
   },
   {
     id: "set2",
-    title: "Unit 5",
+    title: "Слова Unit 5",
     subtitle: "possess, tend, reveal…",
     cards: [
       { term: "Possess", ipa: "[pəˈzes]", pos: "v.", ru: "Иметь, обладать, располагать", ex: "Different workers possessed different skills." },
@@ -64,7 +64,7 @@ window.SETS = [
   },
   {
     id: "set3",
-    title: "Unit 6",
+    title: "Слова Unit 6",
     subtitle: "coil, inductor, relay…",
     cards: [
       { term: "Coil", pos: "n.", ru: "Катушка", ex: "The axial magnetic field was created by two magnetic coils." },
