@@ -1,13 +1,13 @@
 // Грамматические темы. В тексте предложения причастия выделены **так**.
 // notes: разбор каждого причастия — w (слово), type (форма), func (функция), ru (как переводится).
-var P1A = "Participle I (Active)";
-var P1P = "Participle I (Passive)";
-var P2 = "Participle II";
+var P1A = "Participle I Simple Active";
+var P1P = "Participle I Simple Passive";
+var P2 = "Participle II Passive";
 var POST = "Определение (стоит после существительного)";
 var PRE = "Определение (стоит перед существительным)";
 var PASSIVE = "Часть сказуемого (страдательный залог)";
-var PPA = "Perfect Participle (Active)";
-var PPP = "Perfect Participle (Passive)";
+var PPA = "Participle I Perfect Active";
+var PPP = "Participle I Perfect Passive";
 var NOMINAL = "Часть именного сказуемого";
 var ABS = "Независимый причастный оборот";
 var ABS_END = "Независимый причастный оборот, сопутствующее обстоятельство";
