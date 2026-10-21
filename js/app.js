@@ -25,12 +25,28 @@
     subtitle: "Три юнита вместе",
     cards: SETS.reduce(function (acc, s) { return acc.concat(s.cards); }, [])
   };
+  // Карточки из предложений всех тем: только режим «Карточки».
+  var SENT = {
+    id: "sentences",
+    title: "Тест по предложениям",
+    subtitle: "Темы 2.1–2.4",
+    sentences: true,
+    cards: TOPICS.reduce(function (acc, t) {
+      return acc.concat(t.sentences.map(function (s, i) {
+        return { id: "topic:" + t.id + ":" + i, topic: t.id, term: s.en, ru: s.ru };
+      }));
+    }, [])
+  };
   function findSet(id) {
     if (id === "all") return ALL;
+    if (id === SENT.id) return SENT;
     for (var i = 0; i < SETS.length; i++) if (SETS[i].id === id) return SETS[i];
     return null;
   }
   function cardsOf(set) {
+    if (set.sentences) {
+      return set.cards.filter(function (c) { return !prefs.topic || c.topic === prefs.topic; });
+    }
     return set.cards.filter(function (c) { return prefs.extras || !c.extra; });
   }
 
@@ -83,7 +99,7 @@
     try {
       if (!window.speechSynthesis) return;
       speechSynthesis.cancel();
-      var u = new SpeechSynthesisUtterance(text.replace(/\(.*?\)/g, ""));
+      var u = new SpeechSynthesisUtterance(text.replace(/\(.*?\)/g, "").replace(/\*\*/g, ""));
       u.lang = "en-GB";
       u.rate = 0.9;
       speechSynthesis.speak(u);
@@ -139,6 +155,19 @@
           '<span class="set-arrow">›</span>' +
           "</a>";
       }).join("") +
+      "</div>" +
+      '<h2 class="section">Тест по карточкам</h2>' +
+      '<div class="sets">' + (function () {
+        var k = knownCount(SENT.cards);
+        var pct = Math.round(k / SENT.cards.length * 100);
+        return '<a class="set-card" href="#/set/' + SENT.id + '/cards">' +
+          '<div class="set-main"><h2>' + esc(SENT.title) + "</h2>" +
+          '<div class="muted">' + SENT.cards.length + " предложений · " + esc(SENT.subtitle) + "</div></div>" +
+          '<div class="set-progress"><div class="muted">Выучено ' + k + " из " + SENT.cards.length + "</div>" +
+          '<div class="bar"><i style="width:' + pct + '%"></i></div></div>' +
+          '<span class="set-arrow">›</span>' +
+          "</a>";
+      })() +
       "</div>";
   }
 
@@ -186,6 +215,15 @@
     ["list", "Список"]
   ];
   function header(set, mode) {
+    if (set.sentences) {
+      return '<a href="#/">← На главную</a>' +
+        "<h1>" + esc(set.title) + "</h1>" +
+        '<div class="opts">' +
+        [["", "Все темы"]].concat(TOPICS.map(function (t) { return [t.id, t.title]; })).map(function (o) {
+          return '<button class="chip' + ((prefs.topic || "") === o[0] ? " on" : "") + '" data-topic="' + o[0] + '" type="button">' + esc(o[1]) + "</button>";
+        }).join("") +
+        "</div>";
+    }
     return '<a href="#/">← All units</a>' +
       "<h1>" + esc(set.title) + "</h1>" +
       '<div class="modes">' +
@@ -198,6 +236,13 @@
       "</div>";
   }
   function bindOpts() {
+    app.querySelectorAll("[data-topic]").forEach(function (b) {
+      b.addEventListener("click", function () {
+        prefs.topic = b.getAttribute("data-topic");
+        save("tek.prefs", prefs);
+        route();
+      });
+    });
     var b = app.querySelector('[data-opt="extras"]');
     if (b) b.addEventListener("click", function () {
       prefs.extras = !prefs.extras;
@@ -231,7 +276,7 @@
         "</div>";
 
       if (!order.length) {
-        html += '<div class="panel done"><div class="score">🎉</div><p>Все слова в этом наборе отмечены как выученные.</p>' +
+        html += '<div class="panel done"><div class="score">🎉</div><p>Все ' + (set.sentences ? "предложения" : "слова") + " в этом наборе отмечены как выученные.</p>" +
           '<button class="btn" data-a="unknown" type="button">Показать все карточки</button></div>';
         app.innerHTML = html;
         bind();
@@ -241,9 +286,9 @@
       var c = order[i];
       html +=
         '<div class="stats"><span class="l">Учу: ' + (deck.length - k) + '</span><span class="k">Знаю: ' + k + "</span></div>" +
-        '<div class="scene"><button class="flash' + (flipped ? " flipped" : "") + '" data-a="flip" type="button" aria-label="Перевернуть карточку">' +
-        '<div class="face front"><div class="big">' + esc(front(c)) + "</div></div>" +
-        '<div class="face back"><div class="big">' + esc(back(c)) + "</div></div>" +
+        '<div class="scene' + (set.sentences ? " long" : "") + '"><button class="flash' + (flipped ? " flipped" : "") + '" data-a="flip" type="button" aria-label="Перевернуть карточку">' +
+        '<div class="face front"><div class="big">' + boldify(front(c)) + "</div></div>" +
+        '<div class="face back"><div class="big">' + boldify(back(c)) + "</div></div>" +
         "</button></div>" +
         '<div class="controls">' +
         '<button class="round" data-a="prev" type="button" aria-label="Назад">←</button>' +
@@ -547,6 +592,9 @@
     if (topic) {
       document.title = topic.title + " — Technical English";
       cleanup = renderTopic(topic);
+    } else if (set && set.sentences && m[2] !== "cards") {
+      location.replace("#/set/" + set.id + "/cards");
+      return;
     } else if (set && RENDER[m[2]]) {
       document.title = set.title + " — Technical English";
       cleanup = RENDER[m[2]](set);
