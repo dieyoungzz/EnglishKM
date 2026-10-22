@@ -201,8 +201,8 @@ h2.section { font-size: 1.2rem; margin: 28px 0 0; }
 .sentence summary b { color: var(--accent); }
 .sentence .tr { padding: 0 16px 12px; border-top: 1px solid var(--line); padding-top: 12px; margin: 0 16px 0; padding-left: 0; padding-right: 0; }
 .sentence .analysis { display: grid; gap: 8px; padding: 0 16px 16px; }
-.sentence .note { background: var(--bg); border-radius: 8px; padding: 10px 12px; font-size: .95rem; }
-.sentence .note .muted { font-size: .9rem; margin-top: 2px; }
+.sentence .note, .card-analysis .note { background: var(--bg); border-radius: 8px; padding: 10px 12px; font-size: .95rem; }
+.sentence .note .muted, .card-analysis .note .muted { font-size: .9rem; margin-top: 2px; }
 
 /* Карточки с предложениями */
 .scene.long .flash { min-height: 340px; }
@@ -212,3 +212,6 @@ h2.section { font-size: 1.2rem; margin: 28px 0 0; }
   .scene.long .flash { min-height: 380px; }
   .scene.long .face { padding: 20px 16px; }
 }
+.card-analysis { display: grid; gap: 8px; margin-top: 18px; background: var(--surface); border-radius: 14px; box-shadow: var(--shadow); padding: 16px; }
+.card-analysis[hidden] { display: none; }
+.card-analysis h3 { margin: 0; font-size: 1rem; }

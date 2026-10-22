@@ -33,7 +33,7 @@
     sentences: true,
     cards: TOPICS.reduce(function (acc, t) {
       return acc.concat(t.sentences.map(function (s, i) {
-        return { id: "topic:" + t.id + ":" + i, topic: t.id, term: s.en, ru: s.ru };
+        return { id: "topic:" + t.id + ":" + i, topic: t.id, term: s.en, ru: s.ru, notes: s.notes };
       }));
     }, [])
   };
@@ -176,6 +176,13 @@
   function boldify(s) {
     return esc(s).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>");
   }
+  // Разбор причастий предложения.
+  function notesHtml(notes) {
+    return notes.map(function (n) {
+      return '<div class="note"><b>' + esc(n.w) + "</b> — " + esc(n.type) +
+        '<div class="muted">' + esc(n.func) + ". Перевод: «" + esc(n.ru) + "»</div></div>";
+    }).join("");
+  }
   function renderTopic(topic) {
     app.innerHTML = '<a href="#/">← На главную</a>' +
       "<h1>" + esc(topic.title) + "</h1>" +
@@ -185,10 +192,7 @@
       topic.sentences.map(function (s) {
         return '<li><details class="sentence"><summary>' + boldify(s.en) + "</summary>" +
           '<div class="tr">' + esc(s.ru) + "</div>" +
-          '<div class="analysis">' + s.notes.map(function (n) {
-            return '<div class="note"><b>' + esc(n.w) + "</b> — " + esc(n.type) +
-              '<div class="muted">' + esc(n.func) + ". Перевод: «" + esc(n.ru) + "»</div></div>";
-          }).join("") + "</div>" +
+          '<div class="analysis">' + notesHtml(s.notes) + "</div>" +
           "</details></li>";
       }).join("") +
       "</ol>";
@@ -299,7 +303,8 @@
         '<div class="controls">' +
         '<button class="btn bad" data-a="learning" type="button">✗ Ещё учу</button>' +
         '<button class="btn good" data-a="know" type="button">✓ Знаю</button>' +
-        "</div>";
+        "</div>" +
+        (c.notes ? '<div class="card-analysis"' + (flipped ? "" : " hidden") + "><h3>Разбор причастий</h3>" + notesHtml(c.notes) + "</div>" : "");
       app.innerHTML = html;
       bind();
     }
@@ -323,7 +328,12 @@
       }
     }
     function act(a) {
-      if (a === "flip") { flipped = !flipped; app.querySelector(".flash").classList.toggle("flipped", flipped); }
+      if (a === "flip") {
+        flipped = !flipped;
+        app.querySelector(".flash").classList.toggle("flipped", flipped);
+        var an = app.querySelector(".card-analysis");
+        if (an) an.hidden = !flipped;
+      }
       else if (a === "prev") go(-1);
       else if (a === "next") go(1);
       else if (a === "speak") speak(order[i].term);
