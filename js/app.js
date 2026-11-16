@@ -19,27 +19,39 @@
   SETS.forEach(function (set) {
     set.cards.forEach(function (c, i) { c.id = set.id + ":" + i; });
   });
-  var ALL = {
-    id: "all",
-    title: "Все слова",
-    subtitle: "Все юниты и выражения вместе",
-    cards: SETS.reduce(function (acc, s) { return acc.concat(s.cards); }, [])
-  };
-  // Карточки из предложений всех тем: только режим «Карточки».
-  var SENT = {
-    id: "sentences",
-    title: "Тест по предложениям",
-    subtitle: "Темы 2.1–4.3",
-    sentences: true,
-    cards: TOPICS.reduce(function (acc, t) {
-      return acc.concat(t.sentences.map(function (s, i) {
-        return { id: "topic:" + t.id + ":" + i, topic: t.id, term: s.en, ru: s.ru, notes: s.notes };
-      }));
-    }, [])
-  };
+  // Сводные тесты отдельно по модулям КМ2 и КМ3.
+  function makeAll(id, title, subtitle, group) {
+    return {
+      id: id,
+      title: title,
+      subtitle: subtitle,
+      cards: SETS.filter(function (s) { return s.group === group; })
+        .reduce(function (acc, s) { return acc.concat(s.cards); }, [])
+    };
+  }
+  // Карточки из предложений тем модуля: только режим «Карточки».
+  function makeSent(id, title, subtitle, group) {
+    return {
+      id: id,
+      title: title,
+      subtitle: subtitle,
+      group: group,
+      sentences: true,
+      cards: TOPICS.filter(function (t) { return t.group === group; }).reduce(function (acc, t) {
+        return acc.concat(t.sentences.map(function (s, i) {
+          return { id: "topic:" + t.id + ":" + i, topic: t.id, term: s.en, ru: s.ru, notes: s.notes };
+        }));
+      }, [])
+    };
+  }
+  var TESTS = [
+    makeAll("all-km2", "Все слова КМ2", "Units 4–6 вместе", "КМ2"),
+    makeAll("all-km3", "Все слова КМ3", "Units 7–9 и устойчивые выражения вместе", "КМ3"),
+    makeSent("sent-km2", "Тест по предложениям КМ2", "Темы 2.1–2.4", "КМ2"),
+    makeSent("sent-km3", "Тест по предложениям КМ3", "Темы 3.1–4.3", "КМ3")
+  ];
   function findSet(id) {
-    if (id === "all") return ALL;
-    if (id === SENT.id) return SENT;
+    for (var i = 0; i < TESTS.length; i++) if (TESTS[i].id === id) return TESTS[i];
     for (var i = 0; i < SETS.length; i++) if (SETS[i].id === id) return SETS[i];
     return null;
   }
@@ -132,9 +144,10 @@
     var cards = cardsOf(s);
     var k = knownCount(cards);
     var pct = cards.length ? Math.round(k / cards.length * 100) : 0;
+    var unit = s.sentences ? " предложений" : " слов";
     return '<a class="set-card" href="#/set/' + s.id + '/cards">' +
       '<div class="set-main"><h2>' + esc(s.title) + "</h2>" +
-      '<div class="muted">' + cards.length + " слов · " + esc(s.subtitle) + "</div></div>" +
+      '<div class="muted">' + cards.length + unit + " · " + esc(s.subtitle) + "</div></div>" +
       '<div class="set-progress"><div class="muted">Выучено ' + k + " из " + cards.length + "</div>" +
       '<div class="bar"><i style="width:' + pct + '%"></i></div></div>' +
       '<span class="set-arrow">›</span>' +
@@ -150,7 +163,6 @@
     });
     app.innerHTML =
       "<h1>Технический английский</h1>" +
-      '<div class="sets">' + setCardHtml(ALL) + "</div>" +
       groups.map(function (g) {
         return '<h2 class="section">' + esc(g) + "</h2>" +
           '<div class="sets">' + byGroup[g].map(setCardHtml).join("") + "</div>";
@@ -165,19 +177,8 @@
           "</a>";
       }).join("") +
       "</div>" +
-      '<h2 class="section">Тест по карточкам</h2>' +
-      '<div class="sets">' + (function () {
-        var k = knownCount(SENT.cards);
-        var pct = Math.round(k / SENT.cards.length * 100);
-        return '<a class="set-card" href="#/set/' + SENT.id + '/cards">' +
-          '<div class="set-main"><h2>' + esc(SENT.title) + "</h2>" +
-          '<div class="muted">' + SENT.cards.length + " предложений · " + esc(SENT.subtitle) + "</div></div>" +
-          '<div class="set-progress"><div class="muted">Выучено ' + k + " из " + SENT.cards.length + "</div>" +
-          '<div class="bar"><i style="width:' + pct + '%"></i></div></div>' +
-          '<span class="set-arrow">›</span>' +
-          "</a>";
-      })() +
-      "</div>";
+      '<h2 class="section">Тесты по всему модулю</h2>' +
+      '<div class="sets">' + TESTS.map(setCardHtml).join("") + "</div>";
   }
 
   // ---------- тема с предложениями ----------
@@ -232,12 +233,14 @@
       return '<a href="#/">← На главную</a>' +
         "<h1>" + esc(set.title) + "</h1>" +
         '<div class="opts">' +
-        [["", "Все темы"]].concat(TOPICS.map(function (t) { return [t.id, t.title]; })).map(function (o) {
+        [["", "Все темы"]].concat(TOPICS.filter(function (t) {
+          return !set.group || t.group === set.group;
+        }).map(function (t) { return [t.id, t.title]; })).map(function (o) {
           return '<button class="chip' + ((prefs.topic || "") === o[0] ? " on" : "") + '" data-topic="' + o[0] + '" type="button">' + esc(o[1]) + "</button>";
         }).join("") +
         "</div>";
     }
-    return '<a href="#/">← All units</a>' +
+    return '<a href="#/">← На главную</a>' +
       "<h1>" + esc(set.title) + "</h1>" +
       '<div class="modes">' +
       MODES.map(function (m) {
