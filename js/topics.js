@@ -1,5 +1,5 @@
-// Грамматические темы. В тексте предложения причастия выделены **так**.
-// notes: разбор каждого причастия — w (слово), type (форма), func (функция), ru (как переводится).
+// Грамматические темы. В тексте предложения причастия, герундии и устойчивые выражения выделены **так**.
+// notes: разбор — w (слово), type (форма), func (функция), ru (как переводится).
 var P1A = "Participle I Simple Active";
 var P1P = "Participle I Simple Passive";
 var P2 = "Participle II Passive";
@@ -11,11 +11,18 @@ var PPP = "Participle I Perfect Passive";
 var NOMINAL = "Часть именного сказуемого";
 var ABS = "Независимый причастный оборот";
 var ABS_END = "Независимый причастный оборот, сопутствующее обстоятельство";
+// Темы 3.x — герундий.
+var GER = "Герундий (Indefinite Active)";
+var GER_PRF = "Perfect-герундий (Perfect Active)";
+var GER_PS = "Passive-герундий (Indefinite Passive)";
+var GER_PPS = "Perfect Passive-герундий";
+var NAGC = "Независимый герундиальный оборот (притяж. местоимение/существительное + герундий)";
 function n(w, type, func, ru) { return { w: w, type: type, func: func, ru: ru }; }
 
 window.TOPICS = [
   {
     id: "2-1",
+    group: "КМ2",
     title: "Тема 2.1",
     subtitle: "Причастие в функции определения",
     sentences: [
@@ -180,6 +187,7 @@ window.TOPICS = [
   },
   {
     id: "2-2",
+    group: "КМ2",
     title: "Тема 2.2",
     subtitle: "Причастие в функции обстоятельства",
     sentences: [
@@ -347,6 +355,7 @@ window.TOPICS = [
   },
   {
     id: "2-3",
+    group: "КМ2",
     title: "Тема 2.3",
     subtitle: "Независимый причастный оборот в начале предложения",
     sentences: [
@@ -527,6 +536,7 @@ window.TOPICS = [
   },
   {
     id: "2-4",
+    group: "КМ2",
     title: "Тема 2.4",
     subtitle: "Независимый причастный оборот в конце предложения",
     sentences: [
@@ -690,6 +700,875 @@ window.TOPICS = [
         notes: [
           n("were published", P2 + " в составе Past Simple Passive", PASSIVE, "были опубликованы"),
           n("this book having become", PPA, ABS_END, "и эта книга стала")
+        ]
+      }
+    ]
+  },
+  {
+    id: "3-1",
+    group: "КМ3",
+    title: "Тема 3.1",
+    subtitle: "Герундий в функции обстоятельства (всегда с предлогом)",
+    sentences: [
+      {
+        en: "By **taking away** heat, we freeze water into ice.",
+        ru: "Отнимая тепло, мы превращаем воду в лёд.",
+        notes: [
+          n("taking away", GER + " с предлогом by", "Обстоятельство образа действия (как?)", "отнимая")
+        ]
+      },
+      {
+        en: "The energy of any body is its power for **doing** work.",
+        ru: "Энергия любого тела — это его способность совершать работу.",
+        notes: [
+          n("doing", GER + " с предлогом for", POST + " (к существительному power; по-русски — инфинитив)", "совершать")
+        ]
+      },
+      {
+        en: "There are two ways of **stating** the third law of motion.",
+        ru: "Существует два способа формулировки третьего закона движения.",
+        notes: [
+          n("stating", GER + " с предлогом of", POST + " (к существительному ways; по-русски — существительное)", "формулировки")
+        ]
+      },
+      {
+        en: "By **cooling** we can turn substances into solids or liquids.",
+        ru: "Охлаждая, мы можем превращать вещества в твёрдые или жидкие.",
+        notes: [
+          n("cooling", GER + " с предлогом by", "Обстоятельство образа действия (как?)", "охлаждая")
+        ]
+      },
+      {
+        en: "They have developed a new technique for **obtaining** this substance.",
+        ru: "Они разработали новый метод получения этого вещества.",
+        notes: [
+          n("obtaining", GER + " с предлогом for", POST + " (к существительному technique; по-русски — существительное)", "получения")
+        ]
+      },
+      {
+        en: "What is the difference in these two methods of **solving** the problem?",
+        ru: "В чём разница этих двух методов решения задачи?",
+        notes: [
+          n("solving", GER + " с предлогом of", POST + " (к существительному methods; по-русски — существительное)", "решения")
+        ]
+      },
+      {
+        en: "**Before reaching** any conclusions, we should discuss everything in detail.",
+        ru: "Прежде чем делать какие-либо выводы, мы должны обсудить всё подробно.",
+        notes: [
+          n("reaching", GER + " с предлогом before", "Обстоятельство времени (когда?; before = прежде чем)", "прежде чем делать (дойти до)")
+        ]
+      },
+      {
+        en: "**After studying** at the university, young people became skilled specialists.",
+        ru: "Окончив университет, молодые люди стали квалифицированными специалистами.",
+        notes: [
+          n("studying", GER + " с предлогом after", "Обстоятельство времени (когда?)", "окончив (после того как закончили)")
+        ]
+      },
+      {
+        en: "Weather stations report atmospheric conditions for **making** weather maps.",
+        ru: "Метеостанции сообщают данные о состоянии атмосферы для составления карт погоды.",
+        notes: [
+          n("making", GER + " с предлогом for", "Обстоятельство цели (для чего?)", "для составления")
+        ]
+      },
+      {
+        en: "A barometer is an instrument for **measuring** the pressure of the atmosphere.",
+        ru: "Барометр — это прибор для измерения давления атмосферы.",
+        notes: [
+          n("measuring", GER + " с предлогом for", POST + " (к существительному instrument; по-русски — существительное)", "для измерения")
+        ]
+      },
+      {
+        en: "We may change the pressure of air by **removing** some of it or by **heating** or **cooling**.",
+        ru: "Мы можем изменить давление воздуха, удалив часть его, нагревая или охлаждая.",
+        notes: [
+          n("removing", GER + " с предлогом by", "Обстоятельство образа действия (как?)", "удалив (удаляя)"),
+          n("heating", GER + " с предлогом by", "Обстоятельство образа действия", "нагревая"),
+          n("cooling", GER + " с предлогом by", "Обстоятельство образа действия", "охлаждая")
+        ]
+      },
+      {
+        en: "By **repeating** experiments, one gets additional data which help **arriving** at right conclusions.",
+        ru: "Повторяя эксперименты, можно получить дополнительные данные, которые помогают прийти к правильным выводам.",
+        notes: [
+          n("repeating", GER + " с предлогом by", "Обстоятельство образа действия (как?)", "повторяя"),
+          n("arriving", GER + " (после глагола help)", "Дополнение к глаголу help (help doing)", "прийти")
+        ]
+      },
+      {
+        en: "**Without understanding** the laws of mechanics, it is difficult for the students to take part in research.",
+        ru: "Не понимая законов механики, студентам трудно принимать участие в исследованиях.",
+        notes: [
+          n("understanding", GER + " с предлогом without", "Обстоятельство условия (условный оттенок)", "не понимая")
+        ]
+      },
+      {
+        en: "In his report he emphasized the complexity of **producing** these materials in sufficient quantities.",
+        ru: "В своём докладе он подчеркнул сложность производства этих материалов в достаточных количествах.",
+        notes: [
+          n("producing", GER + " с предлогом of", POST + " (к существительному complexity; по-русски — существительное)", "производства")
+        ]
+      },
+      {
+        en: "Another interesting device for **testing** materials at high temperature and speed is hypersonic shock tube.",
+        ru: "Другим интересным прибором для испытания материалов при высоких температурах и скоростях является гиперзвуковая ударная труба.",
+        notes: [
+          n("testing", GER + " с предлогом for", POST + " (к существительному device; по-русски — существительное)", "для испытания")
+        ]
+      },
+      {
+        en: "**On joining** the upper ends of the metals with a metal wire, we caused the current to flow through the wire.",
+        ru: "Соединив верхние концы металлов металлическим проводом, мы заставили ток течь по проводу.",
+        notes: [
+          n("joining", GER + " с предлогом on (on = после того как)", "Обстоятельство времени (когда?)", "соединив")
+        ]
+      },
+      {
+        en: "By **observing** facts and by **using** the results of the experiments, we come to the real knowledge of natural phenomena.",
+        ru: "Наблюдая факты и используя результаты экспериментов, мы приходим к истинному знанию природных явлений.",
+        notes: [
+          n("observing", GER + " с предлогом by", "Обстоятельство образа действия (как?)", "наблюдая"),
+          n("using", GER + " с предлогом by", "Обстоятельство образа действия", "используя")
+        ]
+      },
+      {
+        en: "By **studying** Newton's laws of motion, we learn that they are applied not only in engineering but in our daily life as well.",
+        ru: "Изучая законы движения Ньютона, мы узнаём, что они применяются не только в технике, но и в нашей повседневной жизни.",
+        notes: [
+          n("studying", GER + " с предлогом by", "Обстоятельство образа действия (как?)", "изучая")
+        ]
+      },
+      {
+        en: "Thermal input power can be converted directly to electrical power for **lighting**, **operating** electrical equipment, and other work.",
+        ru: "Тепловая входная мощность может быть непосредственно преобразована в электрическую энергию для освещения, работы электрооборудования и других нужд.",
+        notes: [
+          n("lighting", GER + " с предлогом for", "Обстоятельство цели (для чего?)", "для освещения"),
+          n("operating", GER + " с предлогом for", "Обстоятельство цели", "для работы (электрооборудования)")
+        ]
+      },
+      {
+        en: "The method of **connecting** the armature and field winding of the series motor is exactly the same as for corresponding generator.",
+        ru: "Метод соединения якоря и обмотки возбуждения двигателя с последовательным возбуждением в точности такой же, как и у соответствующего генератора.",
+        notes: [
+          n("connecting", GER + " с предлогом of", POST + " (к существительному method; по-русски — существительное)", "соединения")
+        ]
+      },
+      {
+        en: "**On being set** on a proper orbit, a satellite can either passively fly along it or independently adjust its orbit and change altitude.",
+        ru: "Оказавшись на нужной орбите, спутник может либо пассивно лететь по ней, либо самостоятельно корректировать орбиту и менять высоту.",
+        notes: [
+          n("being set", GER_PS + " с предлогом on", "Обстоятельство времени (когда?)", "оказавшись на")
+        ]
+      },
+      {
+        en: "Materials for **making** plastics can be classified in terms of whether they can be softened or formed only once, or as often as desired.",
+        ru: "Материалы для изготовления пластмасс можно классифицировать в зависимости от того, могут ли они размягчаться или формоваться лишь один раз или столько раз, сколько требуется.",
+        notes: [
+          n("making", GER + " с предлогом for", POST + " (к существительному materials; по-русски — существительное)", "для изготовления")
+        ]
+      },
+      {
+        en: "Systems for **detecting**, **inspecting**, and, if necessary, **attacking** enemy satellites and space vehicles can be either ground- or space-based.",
+        ru: "Системы для обнаружения, наблюдения и, при необходимости, уничтожения вражеских спутников и космических аппаратов могут быть как наземными, так и космическими.",
+        notes: [
+          n("detecting", GER + " с предлогом for", POST + " (к systems)", "для обнаружения"),
+          n("inspecting", GER + " с предлогом for", POST, "для наблюдения"),
+          n("attacking", GER + " с предлогом for", POST, "для уничтожения (атаки)")
+        ]
+      },
+      {
+        en: "The second law of motion provides scientists with a means for **measuring** forces, which is of great importance in **planning** the orbits for artificial satellites.",
+        ru: "Второй закон движения даёт учёным средство для измерения сил, что имеет большое значение при расчёте орбит искусственных спутников.",
+        notes: [
+          n("measuring", GER + " с предлогом for", POST + " (к means; по-русски — существительное)", "для измерения"),
+          n("planning", GER + " с предлогом in", "Обстоятельство времени (при чём?)", "при расчёте (планировании)")
+        ]
+      },
+      {
+        en: "The newly developed technique allows 3-D **mapping** of the crystal structure and can be carried out **using** a transmission electron microscope, an instrument found in many research laboratories.",
+        ru: "Недавно разработанный метод позволяет получать трёхмерную карту кристаллической структуры и может быть реализован с помощью просвечивающего электронного микроскопа — прибора, имеющегося во многих исследовательских лабораториях.",
+        notes: [
+          n("mapping", GER + " (после глагола allows)", "Дополнение к allows (allow doing)", "получать карту (картировать)"),
+          n("using", GER + " (оборот с предлогом with)", "Обстоятельство образа действия (как?)", "с помощью")
+        ]
+      }
+    ]
+  },
+  {
+    id: "3-2",
+    group: "КМ3",
+    title: "Тема 3.2",
+    subtitle: "Герундий в функции подлежащего и дополнения",
+    sentences: [
+      {
+        en: "**Defining** temperature is not so easy.",
+        ru: "Дать определение температуры не так просто.",
+        notes: [
+          n("defining", GER, "Подлежащее (кто? что?)", "дать определение (определить)")
+        ]
+      },
+      {
+        en: "**Breaking** the circuit causes **sparking**.",
+        ru: "Размыкание цепи вызывает искрение.",
+        notes: [
+          n("breaking", GER, "Подлежащее (кто? что?)", "размыкание"),
+          n("sparking", GER, "Прямое дополнение (что вызывает?)", "искрение")
+        ]
+      },
+      {
+        en: "The turbulent flow of gases produces **cooling**.",
+        ru: "Турбулентное течение газов вызывает охлаждение.",
+        notes: [
+          n("cooling", GER, "Прямое дополнение (что вызывает?)", "охлаждение")
+        ]
+      },
+      {
+        en: "These instruments require automatic **programming**.",
+        ru: "Эти приборы требуют автоматического программирования.",
+        notes: [
+          n("programming", GER, "Прямое дополнение (чего требуют?)", "программирования")
+        ]
+      },
+      {
+        en: "The process consists in **uniting** two elemental gases.",
+        ru: "Процесс состоит в соединении двух простых газов.",
+        notes: [
+          n("uniting", GER + " с предлогом in", "Предложное (косвенное) дополнение (в чём?)", "в соединении")
+        ]
+      },
+      {
+        en: "We thought of **starting** another series of experiments.",
+        ru: "Мы подумали о начале новой серии экспериментов.",
+        notes: [
+          n("starting", GER + " с предлогом of", "Предложное (косвенное) дополнение (о чём?)", "о начале")
+        ]
+      },
+      {
+        en: "**Having proved** the validity of his theory, he went on **working** on it.",
+        ru: "Доказав справедливость своей теории, он продолжал работать над ней.",
+        notes: [
+          n("having proved", GER_PRF, "Обстоятельство времени (когда?; действие раньше сказуемого)", "доказав"),
+          n("working", GER + " (после go on)", "Дополнение к глаголу go on (go on doing)", "работать")
+        ]
+      },
+      {
+        en: "**Programming** a computer involves **analysing** the problem for solving.",
+        ru: "Программирование компьютера включает анализ задачи, которую нужно решить.",
+        notes: [
+          n("programming", GER, "Подлежащее (кто? что?)", "программирование"),
+          n("analysing", GER, "Прямое дополнение (что включает?)", "анализ")
+        ]
+      },
+      {
+        en: "**Landing** on the planets will vary according to atmospheric conditions.",
+        ru: "Посадка на планеты будет различаться в зависимости от условий атмосферы.",
+        notes: [
+          n("landing", GER, "Подлежащее (что будет различаться?)", "посадка")
+        ]
+      },
+      {
+        en: "Big rockets have been used for **launching** satellites into the Earth orbit.",
+        ru: "Были использованы большие ракеты для выведения спутников на околоземную орбиту.",
+        notes: [
+          n("launching", GER + " с предлогом for", "Предложное дополнение (для чего?)", "для выведения")
+        ]
+      },
+      {
+        en: "The professor told us about **experimenting** and necessity of **observing** facts.",
+        ru: "Профессор рассказал нам об экспериментировании и необходимости наблюдения фактов.",
+        notes: [
+          n("experimenting", GER + " с предлогом about", "Предложное дополнение (о чём?)", "об экспериментировании"),
+          n("observing", GER + " с предлогом of", POST + " (к necessity; по-русски — существительное)", "наблюдения")
+        ]
+      },
+      {
+        en: "**Launching** a man or a crew into space can be accomplished in several ways.",
+        ru: "Запуск человека или экипажа в космос может быть осуществлён несколькими способами.",
+        notes: [
+          n("launching", GER, "Подлежащее (что может быть осуществлено?)", "запуск")
+        ]
+      },
+      {
+        en: "**Having analyzed** received data, they suggested **carrying out** the experiment again.",
+        ru: "Проанализировав полученные данные, они предложили провести эксперимент заново.",
+        notes: [
+          n("having analyzed", GER_PRF, "Обстоятельство времени (когда?; действие раньше сказуемого)", "проанализировав"),
+          n("carrying out", GER + " (после suggested)", "Дополнение к suggested (suggest doing)", "провести")
+        ]
+      },
+      {
+        en: "It should be noted that this is the maximum error obtained by **adding** individual errors.",
+        ru: "Следует отметить, что это — максимальная ошибка, полученная путём сложения отдельных ошибок.",
+        notes: [
+          n("adding", GER + " с предлогом by", "Обстоятельство образа действия (как?)", "путём сложения")
+        ]
+      },
+      {
+        en: "Radar is used in **finding** the position of a target with respect to a fixed point on the ground.",
+        ru: "Радар используется для определения положения цели относительно неподвижной точки на земле.",
+        notes: [
+          n("finding", GER + " с предлогом in", "Предложное дополнение (в чём?)", "для определения")
+        ]
+      },
+      {
+        en: "**Increasing** the physical size of the antenna is a very effective means for **increasing** the range.",
+        ru: "Увеличение физических размеров антенны — очень эффективное средство увеличения дальности.",
+        notes: [
+          n("increasing", GER, "Подлежащее (что является средством?)", "увеличение"),
+          n("increasing", GER + " с предлогом for", POST + " (к means; по-русски — существительное)", "увеличения дальности")
+        ]
+      },
+      {
+        en: "An analog computer operates by **using** physical analogs of numerical measurements.",
+        ru: "Аналоговый компьютер работает, используя физические аналоги числовых измерений.",
+        notes: [
+          n("using", GER + " с предлогом by", "Обстоятельство образа действия (как?)", "используя")
+        ]
+      },
+      {
+        en: "**Changing** the resistance of a circuit is one of the methods of **controlling** the flow of current in a circuit.",
+        ru: "Изменение сопротивления цепи — один из методов регулирования потока тока в цепи.",
+        notes: [
+          n("changing", GER, "Подлежащее (что является методом?)", "изменение"),
+          n("controlling", GER + " с предлогом of", POST + " (к methods; по-русски — существительное)", "регулирования")
+        ]
+      },
+      {
+        en: "This coefficient was measured by **applying** to the input of the system d-c signals in the form of square pulses.",
+        ru: "Этот коэффициент был измерен подачей на вход системы постоянных сигналов в форме прямоугольных импульсов.",
+        notes: [
+          n("applying", GER + " с предлогом by", "Обстоятельство образа действия (как?)", "путём подачи")
+        ]
+      },
+      {
+        en: "**Representing** the electric field by means of these lines helps us **to picture** the forces between the charged bodies.",
+        ru: "Изображение электрического поля с помощью этих линий помогает нам представить силы между заряженными телами.",
+        notes: [
+          n("representing", GER, "Подлежащее (что помогает?)", "изображение"),
+          n("to picture", "Инфинитив (сложное дополнение help us to do)", "Дополнение к helps", "представить")
+        ]
+      },
+      {
+        en: "More complicated operations are achieved by **combining** simpler operations according to the instructions.",
+        ru: "Более сложные операции выполняются путём комбинирования более простых операций в соответствии с инструкциями.",
+        notes: [
+          n("combining", GER + " с предлогом by", "Обстоятельство образа действия (как?)", "путём комбинирования")
+        ]
+      },
+      {
+        en: "**Measuring** the temperature of the dew point is the most accurate method of **determining** relative humidity.",
+        ru: "Измерение температуры точки росы — наиболее точный метод определения относительной влажности.",
+        notes: [
+          n("measuring", GER, "Подлежащее (что является методом?)", "измерение"),
+          n("determining", GER + " с предлогом of", POST + " (к method; по-русски — существительное)", "определения")
+        ]
+      },
+      {
+        en: "The delay associated with the L/R of the control circuit may be improved by merely **adding** series resistance.",
+        ru: "Задержка, связанная с L/R цепи управления, может быть уменьшена простым добавлением последовательного сопротивления.",
+        notes: [
+          n("adding", GER + " с предлогом by", "Обстоятельство образа действия (как?)", "добавлением")
+        ]
+      },
+      {
+        en: "**Demonstrating** the first law of motion on the Earth's surface is rather difficult due to tremendous forces of gravity.",
+        ru: "Продемонстрировать первый закон движения на поверхности Земли довольно трудно из-за огромных сил тяжести.",
+        notes: [
+          n("demonstrating", GER, "Подлежащее (что трудно?)", "продемонстрировать (демонстрация)")
+        ]
+      },
+      {
+        en: "The magnetic field is generally produced by **placing** a permanent magnet externally to the anode so that the field is parallel to the cathode.",
+        ru: "Магнитное поле обычно создаётся помещением постоянного магнита снаружи анода так, что поле параллельно катоду.",
+        notes: [
+          n("placing", GER + " с предлогом by", "Обстоятельство образа действия (как?)", "помещением")
+        ]
+      }
+    ]
+  },
+  {
+    id: "3-3",
+    group: "КМ3",
+    title: "Тема 3.3",
+    subtitle: "Независимый герундиальный оборот",
+    sentences: [
+      {
+        en: "He insisted on **our adopting** a new plan.",
+        ru: "Он настаивал на том, чтобы мы приняли новый план.",
+        notes: [
+          n("our adopting", NAGC + ": притяж. местоимение + герундий", "Предложное дополнение (на чём?)", "на том, чтобы мы приняли")
+        ]
+      },
+      {
+        en: "They insisted on **the committee's postponing** the discussion.",
+        ru: "Они настаивали на том, чтобы комитет отложил обсуждение.",
+        notes: [
+          n("the committee's postponing", NAGC + ": существительное в притяжательном падеже + герундий", "Предложное дополнение (на чём?)", "на том, чтобы комитет отложил")
+        ]
+      },
+      {
+        en: "**Cogeneration's being** an off-the-shelf technology is its benefit.",
+        ru: "То, что когенерация — готовая (серийная) технология, является её преимуществом.",
+        notes: [
+          n("cogeneration's being", NAGC + ": существительное в притяжательном падеже + герундий", "Подлежащее (что является преимуществом?)", "то, что когенерация является")
+        ]
+      },
+      {
+        en: "Silicon resembles carbon in **its forming** a series of volatile hydrates.",
+        ru: "Кремний похож на углерод тем, что образует ряд летучих гидратов.",
+        notes: [
+          n("its forming", NAGC, "Предложное дополнение (в чём похож?)", "тем, что он образует")
+        ]
+      },
+      {
+        en: "We know of **silver and copper being** very good conductors of electricity.",
+        ru: "Мы знаем, что серебро и медь — очень хорошие проводники электричества.",
+        notes: [
+          n("silver and copper being", NAGC + ": существительное в общем падеже + герундий", "Дополнение (что знаем?)", "что серебро и медь являются")
+        ]
+      },
+      {
+        en: "Due to **working together** we succeeded in **our finishing** the work on time.",
+        ru: "Благодаря совместной работе нам удалось завершить работу вовремя.",
+        notes: [
+          n("working", GER + " с предлогом due to", "Обстоятельство причины (почему?)", "благодаря (тому, что работали)"),
+          n("our finishing", NAGC, "Дополнение (в чём удалось?)", "что мы завершили")
+        ]
+      },
+      {
+        en: "**Newton's having stated** his laws of motion is very important for modern science.",
+        ru: "То, что Ньютон сформулировал свои законы движения, очень важно для современной науки.",
+        notes: [
+          n("Newton's having stated", NAGC + " с Perfect-герундием", "Подлежащее (что важно?)", "то, что Ньютон сформулировал")
+        ]
+      },
+      {
+        en: "We know of **any object being prevented** from moving at constant speed by air friction.",
+        ru: "Нам известно, что любое тело не может двигаться с постоянной скоростью из-за силы трения о воздух.",
+        notes: [
+          n("any object being prevented", NAGC + " (Passive)", "Дополнение (что известно?)", "что любое тело удерживается")
+        ]
+      },
+      {
+        en: "**Most metals' being** good conductors of heat and electricity made them widely used in industry.",
+        ru: "То, что большинство металлов являются хорошими проводниками тепла и электричества, сделало их широко используемыми в промышленности.",
+        notes: [
+          n("most metals' being", NAGC + ": существительное во мн. ч. в притяжательном падеже", "Подлежащее (что сделало?)", "то, что большинство металлов являются")
+        ]
+      },
+      {
+        en: "One cannot carry out experiments without **lab technique having been mastered** well enough.",
+        ru: "Нельзя проводить эксперименты, не овладев в достаточной степени лабораторной техникой.",
+        notes: [
+          n("lab technique having been mastered", NAGC + " с Perfect Passive-герундием", "Обстоятельство условия (условный оттенок)", "не овладев (овладев которой)")
+        ]
+      },
+      {
+        en: "We have heard of **Newton having been suggested** to put down on paper his ideas which he did.",
+        ru: "Нам известно, что Ньютону предложили изложить на бумаге свои идеи, что он и сделал.",
+        notes: [
+          n("Newton having been suggested", NAGC + " с Perfect Passive-герундием", "Дополнение (о чём слышали?)", "что Ньютону предложили"),
+          n("to put down", "Инфинитив (сложное подлежащее в действительном залоге)", "Подлежащее (кому предложили?)", "изложить")
+        ]
+      },
+      {
+        en: "The motion of this body was changed because of **its having been acted upon** by an external force.",
+        ru: "Движение этого тела изменилось, потому что на него действовала внешняя сила.",
+        notes: [
+          n("its having been acted upon", NAGC + " с Perfect Passive-герундием", "Обстоятельство причины (почему?)", "потому что на него действовала")
+        ]
+      },
+      {
+        en: "**Marie Sklodowska's having made** numerous experiments resulted in **isolating** two new elements.",
+        ru: "То, что Мария Склодовская провела множество экспериментов, привело к выделению двух новых элементов.",
+        notes: [
+          n("Marie Sklodowska's having made", NAGC + " с Perfect-герундием", "Подлежащее (что привело?)", "то, что провела"),
+          n("isolating", GER + " с предлогом in", "Предложное дополнение (к чему привело?)", "к выделению")
+        ]
+      },
+      {
+        en: "Mica is widely used as a dielectric in high grade capacitors because of **its having** high voltage strength.",
+        ru: "Слюда широко используется как диэлектрик в высококачественных конденсаторах благодаря тому, что она обладает высокой электрической прочностью.",
+        notes: [
+          n("its having", NAGC, "Обстоятельство причины (почему?)", "благодаря тому, что она обладает")
+        ]
+      },
+      {
+        en: "**The Curies' having discovered** radium gave them the possibility of **discovering** other radioactive elements.",
+        ru: "То, что супруги Кюри открыли радий, дало им возможность открыть другие радиоактивные элементы.",
+        notes: [
+          n("the Curies' having discovered", NAGC + " с Perfect-герундием", "Подлежащее (что дало?)", "то, что открыли"),
+          n("discovering", GER + " с предлогом of", "Дополнение (возможность чего?)", "открыть (открытия)")
+        ]
+      },
+      {
+        en: "According to the Newton's second law, the motion of a body is changed as a result of **its being acted upon** by a force.",
+        ru: "Согласно второму закону Ньютона, движение тела изменяется в результате действия на него силы.",
+        notes: [
+          n("its being acted upon", NAGC + " (Passive)", "Предложное дополнение (в результате чего?)", "в результате того, что на него действует")
+        ]
+      },
+      {
+        en: "There is a constant danger for every spaceship of **being burned up** because of **its having been set** on a wrong orbit.",
+        ru: "Существует постоянная опасность для каждого космического корабля сгореть, потому что он был выведен на неверную орбиту.",
+        notes: [
+          n("being burned up", GER_PS + " (в обороте с of)", "Дополнение (опасность чего?)", "сгореть (быть сожжённым)"),
+          n("its having been set", NAGC + " с Perfect Passive-герундием", "Обстоятельство причины (почему?)", "потому что он был выведен")
+        ]
+      },
+      {
+        en: "The state of rest or uniform motion of a body is changed after **its being acted upon** by some external unbalanced force.",
+        ru: "Состояние покоя или равномерного движения тела изменяется после того, как на него подействует какая-либо внешняя неуравновешенная сила.",
+        notes: [
+          n("its being acted upon", NAGC + " (Passive)", "Обстоятельство времени (когда?)", "после того как на него подействует")
+        ]
+      },
+      {
+        en: "Graphite is used as a moderator in the atomic pile because of **its being cheap** and its ability to stand high temperatures.",
+        ru: "Графит используется в качестве замедлителя в атомном реакторе, потому что он дёшев и способен выдерживать высокие температуры.",
+        notes: [
+          n("its being cheap", NAGC, "Обстоятельство причины (почему?)", "потому что он дёшев")
+        ]
+      },
+      {
+        en: "We know of **his having spent** more than 20 years of scientific thinking before finally **formulating** the ideas on paper.",
+        ru: "Нам известно, что он потратил более 20 лет научных размышлений, прежде чем наконец сформулировал свои идеи на бумаге.",
+        notes: [
+          n("his having spent", NAGC + " с Perfect-герундием", "Дополнение (что известно?)", "что он потратил"),
+          n("formulating", GER + " с предлогом before", "Обстоятельство времени (когда?)", "прежде чем сформулировал")
+        ]
+      },
+      {
+        en: "When a bar of iron is thrust into a fire it becomes heated due to **the atoms comprising the bar becoming agitated**.",
+        ru: "Когда железный брусок помещают в огонь, он нагревается, потому что атомы, составляющие брусок, приходят в возбуждённое состояние.",
+        notes: [
+          n("the atoms comprising the bar becoming agitated", NAGC + ": существительное с определением + герундий", "Обстоятельство причины (почему?)", "потому что атомы возбуждаются")
+        ]
+      },
+      {
+        en: "**Newton's having established** the law of inertia has provided scientists with a means for **setting** satellites on proper orbits.",
+        ru: "То, что Ньютон установил закон инерции, дало учёным средство для выведения спутников на нужные орбиты.",
+        notes: [
+          n("Newton's having established", NAGC + " с Perfect-герундием", "Подлежащее (что дало?)", "то, что установил"),
+          n("setting", GER + " с предлогом for", POST + " (к means; по-русски — существительное)", "выведения")
+        ]
+      },
+      {
+        en: "When photons strike the absorption layer, we know of **their energizing electrons**, **causing** them **to break free** from their atomic bonds.",
+        ru: "Когда фотоны попадают на поглощающий слой, нам известно, что они придают энергию электронам, вызывая их освобождение от атомных связей.",
+        notes: [
+          n("their energizing electrons", NAGC, "Дополнение (что известно?)", "что они придают энергию электронам"),
+          n("causing", GER + " (герундиальный оборот)", "Обстоятельство результата / следствия", "вызывая"),
+          n("to break free", "Инфинитив (сложное дополнение cause them to do)", "Дополнение к causing", "освободиться")
+        ]
+      },
+      {
+        en: "The electrons flow to the cathode because of **their potential at the anode being more negative** and **their having** a higher potential energy.",
+        ru: "Электроны текут к катоду, потому что их потенциал на аноде более отрицателен и они обладают более высокой потенциальной энергией.",
+        notes: [
+          n("their potential at the anode being more negative", NAGC, "Обстоятельство причины (почему?)", "потому что их потенциал более отрицателен"),
+          n("their having", NAGC, "Обстоятельство причины (почему?)", "и обладают")
+        ]
+      },
+      {
+        en: "Scientists are able to measure the forces of gravitation at any point on the Earth's surface due to **Newton's having provided** them with the second law of motion.",
+        ru: "Учёные могут измерять силы тяжести в любой точке поверхности Земли благодаря тому, что Ньютон дал им второй закон движения.",
+        notes: [
+          n("Newton's having provided", NAGC + " с Perfect-герундием", "Обстоятельство причины (почему?)", "благодаря тому, что дал")
+        ]
+      }
+    ]
+  },
+  {
+    id: "4-3",
+    group: "КМ3",
+    title: "Тема 4.3",
+    subtitle: "Устойчивые выражения и сложные предлоги",
+    sentences: [
+      {
+        en: "This is **the only** reasonable suggestion.",
+        ru: "Это единственное разумное предложение.",
+        notes: [
+          n("the only", "Устойчивое выражение", "Определение", "единственное")
+        ]
+      },
+      {
+        en: "We must **by all means** complete this work in time.",
+        ru: "Мы должны во что бы то ни стало завершить эту работу вовремя.",
+        notes: [
+          n("by all means", "Устойчивое выражение", "Вводный оборот (усиление)", "во что бы то ни стало, обязательно")
+        ]
+      },
+      {
+        en: "**By no means** can this device be put into operation.",
+        ru: "Этот прибор ни в коем случае нельзя вводить в эксплуатацию.",
+        notes: [
+          n("by no means", "Устойчивое выражение", "Вводный оборот (усиление отрицания)", "ни в коем случае")
+        ]
+      },
+      {
+        en: "Iron is allotropic, **that is**, it exists in different forms.",
+        ru: "Железо аллотропно, то есть существует в различных формах.",
+        notes: [
+          n("that is", "Устойчивое выражение", "Вводное пояснение", "то есть")
+        ]
+      },
+      {
+        en: "**The heavier** the substance, **the more complicated** is the atom.",
+        ru: "Чем тяжелее вещество, тем сложнее атом.",
+        notes: [
+          n("the heavier ... the more complicated", "Устойчивая конструкция the ... the", "Сравнительная конструкция", "чем тяжелее..., тем сложнее...")
+        ]
+      },
+      {
+        en: "**But for** the atmosphere, no life would be possible on the Earth.",
+        ru: "Если бы не атмосфера, на Земле не было бы жизни.",
+        notes: [
+          n("but for", "Сложный предлог", "Обстоятельство условия", "если бы не")
+        ]
+      },
+      {
+        en: "A considerable amount of heat is radiated by the body **in question**.",
+        ru: "Значительное количество тепла излучается рассматриваемым телом.",
+        notes: [
+          n("in question", "Устойчивое выражение", POST + " (после существительного)", "рассматриваемым, вопросу")
+        ]
+      },
+      {
+        en: "The molecules are held in position **due to** the rigidity of the crystal.",
+        ru: "Молекулы удерживаются в положении благодаря жёсткости кристалла.",
+        notes: [
+          n("due to", "Сложный предлог", "Обстоятельство причины", "благодаря, вследствие, из-за")
+        ]
+      },
+      {
+        en: "**In order to** break this glass a great amount of force must be applied.",
+        ru: "Чтобы разбить это стекло, необходимо приложить большую силу.",
+        notes: [
+          n("in order to", "Устойчивое выражение", "Обстоятельство цели", "для того чтобы")
+        ]
+      },
+      {
+        en: "Differential equations are used in mathematics **as often as** in physics.",
+        ru: "Дифференциальные уравнения используются в математике так же часто, как и в физике.",
+        notes: [
+          n("as often as", "Устойчивая конструкция as ... as", "Сравнение", "так же часто, как")
+        ]
+      },
+      {
+        en: "**The better** the experimental technique, **the more reliable** are the results.",
+        ru: "Чем лучше экспериментальная техника, тем надёжнее результаты.",
+        notes: [
+          n("the better ... the more reliable", "Устойчивая конструкция the ... the", "Сравнительная конструкция", "чем лучше..., тем надёжнее...")
+        ]
+      },
+      {
+        en: "When an electric charge in motion, it is **referred to** as an electric current.",
+        ru: "Когда электрический заряд находится в движении, его называют электрическим током.",
+        notes: [
+          n("referred to", "Устойчивое выражение", PASSIVE + " (is referred to as — называется)", "называют, ссылаются на")
+        ]
+      },
+      {
+        en: "**The only** exception to this is hydrogen whose nucleus contains only the proton.",
+        ru: "Единственное исключение из этого — водород, ядро которого содержит только протон.",
+        notes: [
+          n("the only", "Устойчивое выражение", "Определение", "единственное")
+        ]
+      },
+      {
+        en: "The laboratory just **referred to** was provided with the most modern measuring devices.",
+        ru: "Только что упомянутая лаборатория была оснащена самыми современными измерительными приборами.",
+        notes: [
+          n("referred to", "Устойчивое выражение", POST + " (после существительного)", "упомянутая")
+        ]
+      },
+      {
+        en: "**In order to** prevent corrosion, metals used in industry must be covered with special paint.",
+        ru: "Чтобы предотвратить коррозию, металлы, используемые в промышленности, должны быть покрыты специальной краской.",
+        notes: [
+          n("in order to", "Устойчивое выражение", "Обстоятельство цели", "для того чтобы")
+        ]
+      },
+      {
+        en: "**The higher** the resistance of the wire, **the hotter** it will get under the flow of a given current.",
+        ru: "Чем выше сопротивление провода, тем сильнее он нагреется при прохождении заданного тока.",
+        notes: [
+          n("the higher ... the hotter", "Устойчивая конструкция the ... the", "Сравнительная конструкция", "чем выше..., тем сильнее...")
+        ]
+      },
+      {
+        en: "The question of setting a unit of e.m.f. can be **dealt with** in the same way **as for** current.",
+        ru: "Вопрос о введении единицы ЭДС может быть решён так же, как и для тока.",
+        notes: [
+          n("dealt with", "Устойчивое выражение", PASSIVE + " (be dealt with — решаться, иметь дело с)", "решён"),
+          n("as for", "Устойчивое выражение", "Сравнительный оборот", "как и для, что касается")
+        ]
+      },
+      {
+        en: "Electrolytes conduct the current **owing to** the presence of ions both positive and negative.",
+        ru: "Электролиты проводят ток благодаря наличию как положительных, так и отрицательных ионов.",
+        notes: [
+          n("owing to", "Сложный предлог", "Обстоятельство причины", "благодаря, вследствие")
+        ]
+      },
+      {
+        en: "This error in calculations is **due to** numerical integration of the differential equation.",
+        ru: "Эта ошибка в расчётах обусловлена численным интегрированием дифференциального уравнения.",
+        notes: [
+          n("due to", "Сложный предлог", "Обстоятельство причины", "обусловлена, из-за")
+        ]
+      },
+      {
+        en: "**But for** his help, it would have been extremely difficult to deal with such accurate measurements.",
+        ru: "Если бы не его помощь, было бы чрезвычайно трудно справиться с такими точными измерениями.",
+        notes: [
+          n("but for", "Сложный предлог", "Обстоятельство условия", "если бы не")
+        ]
+      },
+      {
+        en: "A vehicle is considered a sounding rocket **provided** it rises above the atmosphere out to 4000 miles.",
+        ru: "Летательный аппарат считается зондировочной ракетой при условии, что он поднимается выше атмосферы на расстояние до 4000 миль.",
+        notes: [
+          n("provided", "Устойчивое выражение (provided (that))", "Обстоятельство условия", "при условии, что")
+        ]
+      },
+      {
+        en: "The efficiency of the machine is 85%, **the rest of** the power being lost in the resistance to friction.",
+        ru: "КПД машины составляет 85%, остальная мощность теряется на преодоление трения.",
+        notes: [
+          n("the rest of", "Устойчивое выражение", "Определение", "остальная, остаток")
+        ]
+      },
+      {
+        en: "The experimenter will be able to carry out numerous tests **provided** he is given all necessary instruments.",
+        ru: "Экспериментатор сможет провести многочисленные испытания при условии, что ему дадут все необходимые приборы.",
+        notes: [
+          n("provided", "Устойчивое выражение (provided (that))", "Обстоятельство условия", "при условии, что")
+        ]
+      },
+      {
+        en: "**As a matter of fact**, most of our knowledge of the atom nature has come from the work of physicists.",
+        ru: "На самом деле большая часть наших знаний о природе атома получена из работ физиков.",
+        notes: [
+          n("as a matter of fact", "Устойчивое выражение", "Вводный оборот", "на самом деле, фактически")
+        ]
+      },
+      {
+        en: "The possibility of an insulator breakdown which is **referred to** in the above article was **due to** high voltage.",
+        ru: "Возможность пробоя изолятора, о которой говорится в приведённой выше статье, была вызвана высоким напряжением.",
+        notes: [
+          n("referred to", "Устойчивое выражение", PASSIVE + " (в придаточном)", "о которой говорится"),
+          n("due to", "Сложный предлог", "Обстоятельство причины", "вызвана, из-за")
+        ]
+      },
+      {
+        en: "**As a matter of fact**, the methods used in measuring activities depend upon well-known equilibrium laws.",
+        ru: "На самом деле методы, используемые при измерении активности, зависят от общеизвестных законов равновесия.",
+        notes: [
+          n("as a matter of fact", "Устойчивое выражение", "Вводный оборот", "на самом деле, фактически")
+        ]
+      },
+      {
+        en: "Some metals, such as copper and silver, are particularly efficient **due to** the high density of free electrons.",
+        ru: "Некоторые металлы, такие как медь и серебро, особенно эффективны благодаря высокой плотности свободных электронов.",
+        notes: [
+          n("due to", "Сложный предлог", "Обстоятельство причины", "благодаря, из-за")
+        ]
+      },
+      {
+        en: "Steam may be passed into an engine to produce mechanical energy. This, **in its turn**, may drive a dynamo.",
+        ru: "Пар может быть подан в двигатель для получения механической энергии. Та, в свою очередь, может приводить в действие динамо.",
+        notes: [
+          n("in its turn", "Устойчивое выражение", "Вводный оборот", "в свою очередь")
+        ]
+      },
+      {
+        en: "**In case** the charges are far enough apart, the electric field can be approximated as zero for practical purposes.",
+        ru: "В случае, если заряды достаточно далеко друг от друга, электрическое поле можно приближённо считать равным нулю для практических целей.",
+        notes: [
+          n("in case", "Сложный предлог (in case (of))", "Обстоятельство условия", "в случае, если")
+        ]
+      },
+      {
+        en: "**In dealing with** direct currents any potential difference in excess of five volts should be considered unsafe.",
+        ru: "При работе с постоянными токами любая разность потенциалов более пяти вольт должна считаться небезопасной.",
+        notes: [
+          n("in dealing with", "Устойчивое выражение", "Обстоятельство времени / условия", "при работе с, имея дело с")
+        ]
+      },
+      {
+        en: "**The higher** the current flow, **due to** a higher voltage, **the greater** is the number of electron collisions per second.",
+        ru: "Чем выше ток из-за более высокого напряжения, тем большее число столкновений электронов происходит в секунду.",
+        notes: [
+          n("the higher ... the greater", "Устойчивая конструкция the ... the", "Сравнительная конструкция", "чем выше..., тем больше..."),
+          n("due to", "Сложный предлог", "Обстоятельство причины", "из-за")
+        ]
+      },
+      {
+        en: "**In order to** locate some defects in objects made of wood, rubber or metal, the laboratory assistant X-rays them.",
+        ru: "Чтобы обнаружить дефекты в изделиях из дерева, резины или металла, лаборант просвечивает их рентгеном.",
+        notes: [
+          n("in order to", "Устойчивое выражение", "Обстоятельство цели", "чтобы, для того чтобы")
+        ]
+      },
+      {
+        en: "When an electric field acts upon the molecule of even a good insulator, there is a motion of electrons **due to** this field.",
+        ru: "Когда электрическое поле действует на молекулу даже хорошего изолятора, возникает движение электронов из-за этого поля.",
+        notes: [
+          n("due to", "Сложный предлог", "Обстоятельство причины", "из-за, вследствие")
+        ]
+      },
+      {
+        en: "**In fact**, the diffraction phenomenon is very similar to the interference phenomenon and they both happen simultaneously.",
+        ru: "Фактически явление дифракции очень похоже на явление интерференции, и оба происходят одновременно.",
+        notes: [
+          n("in fact", "Устойчивое выражение", "Вводный оборот", "фактически, на самом деле")
+        ]
+      },
+      {
+        en: "Our most accurate knowledge about climate sensitivity, **at least** so far, is based on empirical data from the earth's history.",
+        ru: "Наши самые точные знания о чувствительности климата, по крайней мере до сих пор, основаны на эмпирических данных истории Земли.",
+        notes: [
+          n("at least", "Устойчивое выражение", "Вводный оборот", "по крайней мере")
+        ]
+      },
+      {
+        en: "The method of connecting the armature and field winding of the series motor is exactly the same **as for** the corresponding generator.",
+        ru: "Метод соединения якоря и обмотки возбуждения двигателя с последовательным возбуждением в точности такой же, как и у соответствующего генератора.",
+        notes: [
+          n("as for", "Устойчивое выражение", "Сравнительный оборот", "как и для, что касается")
+        ]
+      },
+      {
+        en: "**In fact**, the voltage stress produced by the wave can be considered as resulting from the movement of the magnetic flux of the same wave.",
+        ru: "Фактически электрическое напряжение, создаваемое волной, можно рассматривать как результат движения магнитного потока той же волны.",
+        notes: [
+          n("in fact", "Устойчивое выражение", "Вводный оборот", "фактически, на самом деле")
+        ]
+      },
+      {
+        en: "The 'preferential' scattering of radiation arises **because of** the mutual interaction between the electric and magnetic resonances of the nanosphere.",
+        ru: "«Преференциальное» рассеяние излучения возникает из-за взаимодействия между электрическим и магнитным резонансами наносферы.",
+        notes: [
+          n("because of", "Сложный предлог", "Обстоятельство причины", "из-за, вследствие, благодаря")
+        ]
+      },
+      {
+        en: "In the Universe where all is in motion and nothing is fixed, only light always has the same speed, the speed of light being **the only** constant quality.",
+        ru: "Во Вселенной, где всё находится в движении и ничто не неизменно, только свет всегда имеет одну и ту же скорость — скорость света является единственной постоянной величиной.",
+        notes: [
+          n("the only", "Устойчивое выражение", "Определение (именная часть сказуемого)", "единственной постоянной")
+        ]
+      },
+      {
+        en: "Iron is **by all means** the most important metal, not alone **because of** its comparative cheapness, but **because of** the high value of the permeability in most electric apparatus.",
+        ru: "Железо во всех отношениях — самый важный металл, не только из-за его сравнительной дешевизны, но и из-за высокого значения проницаемости в большинстве электрических аппаратов.",
+        notes: [
+          n("by all means", "Устойчивое выражение", "Вводный оборот (усиление)", "во всех отношениях, во что бы то ни стало"),
+          n("because of", "Сложный предлог", "Обстоятельство причины", "из-за, вследствие")
         ]
       }
     ]
