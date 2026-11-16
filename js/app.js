@@ -29,7 +29,7 @@
   var SENT = {
     id: "sentences",
     title: "Тест по предложениям",
-    subtitle: "Темы 2.1–2.4",
+    subtitle: "Темы 2.1–4.3",
     sentences: true,
     cards: TOPICS.reduce(function (acc, t) {
       return acc.concat(t.sentences.map(function (s, i) {
@@ -160,7 +160,7 @@
       TOPICS.map(function (t) {
         return '<a class="set-card" href="#/topic/' + t.id + '">' +
           '<div class="set-main"><h2>' + esc(t.title) + "</h2>" +
-          '<div class="muted">' + t.sentences.length + " предложений · " + esc(t.subtitle) + "</div></div>" +
+          '<div class="muted">' + (t.group ? esc(t.group) + " · " : "") + t.sentences.length + " предложений · " + esc(t.subtitle) + "</div></div>" +
           '<span class="set-arrow">›</span>' +
           "</a>";
       }).join("") +
@@ -195,7 +195,7 @@
   function renderTopic(topic) {
     app.innerHTML = '<a href="#/">← На главную</a>' +
       "<h1>" + esc(topic.title) + "</h1>" +
-      '<p class="muted">' + esc(topic.subtitle) + ". Причастия выделены жирным, нажмите на предложение, чтобы увидеть перевод и разбор.</p>" +
+      '<p class="muted">' + esc(topic.subtitle) + ". Ключевые формы выделены жирным, нажмите на предложение, чтобы увидеть перевод и разбор.</p>" +
       '<div class="opts"><button class="chip" id="toggleAll" type="button">Развернуть все</button></div>' +
       '<ol class="sentences">' +
       topic.sentences.map(function (s) {
