@@ -22,7 +22,7 @@
   var ALL = {
     id: "all",
     title: "Все слова",
-    subtitle: "Три юнита вместе",
+    subtitle: "Все юниты и выражения вместе",
     cards: SETS.reduce(function (acc, s) { return acc.concat(s.cards); }, [])
   };
   // Карточки из предложений всех тем: только режим «Карточки».
@@ -128,24 +128,33 @@
   });
 
   // ---------- главная ----------
+  function setCardHtml(s) {
+    var cards = cardsOf(s);
+    var k = knownCount(cards);
+    var pct = cards.length ? Math.round(k / cards.length * 100) : 0;
+    return '<a class="set-card" href="#/set/' + s.id + '/cards">' +
+      '<div class="set-main"><h2>' + esc(s.title) + "</h2>" +
+      '<div class="muted">' + cards.length + " слов · " + esc(s.subtitle) + "</div></div>" +
+      '<div class="set-progress"><div class="muted">Выучено ' + k + " из " + cards.length + "</div>" +
+      '<div class="bar"><i style="width:' + pct + '%"></i></div></div>' +
+      '<span class="set-arrow">›</span>' +
+      "</a>";
+  }
   function renderHome() {
-    var all = [ALL].concat(SETS);
+    // Разделы по group (КМ2, КМ3…) в порядке первого появления в SETS.
+    var groups = [], byGroup = {};
+    SETS.forEach(function (s) {
+      var g = s.group || "";
+      if (!byGroup[g]) { byGroup[g] = []; groups.push(g); }
+      byGroup[g].push(s);
+    });
     app.innerHTML =
       "<h1>Технический английский</h1>" +
-      '<div class="sets">' +
-      all.map(function (s) {
-        var cards = cardsOf(s);
-        var k = knownCount(cards);
-        var pct = cards.length ? Math.round(k / cards.length * 100) : 0;
-        return '<a class="set-card" href="#/set/' + s.id + '/cards">' +
-          '<div class="set-main"><h2>' + esc(s.title) + "</h2>" +
-          '<div class="muted">' + cards.length + " слов · " + esc(s.subtitle) + "</div></div>" +
-          '<div class="set-progress"><div class="muted">Выучено ' + k + " из " + cards.length + "</div>" +
-          '<div class="bar"><i style="width:' + pct + '%"></i></div></div>' +
-          '<span class="set-arrow">›</span>' +
-          "</a>";
+      '<div class="sets">' + setCardHtml(ALL) + "</div>" +
+      groups.map(function (g) {
+        return '<h2 class="section">' + esc(g) + "</h2>" +
+          '<div class="sets">' + byGroup[g].map(setCardHtml).join("") + "</div>";
       }).join("") +
-      "</div>" +
       '<h2 class="section">Предложения</h2>' +
       '<div class="sets">' +
       TOPICS.map(function (t) {

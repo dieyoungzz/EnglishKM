@@ -1,8 +1,10 @@
 // Словарь, переписанный с методички. Поля: term, pos, ipa, ru, ex (пример).
 // extra: true отмечает слова из дополнительного глоссария в конце набора.
+// group: раздел на главной (КМ2 — Units 4–6, КМ3 — Units 7–9 и устойчивые выражения).
 window.SETS = [
   {
     id: "set1",
+    group: "КМ2",
     title: "Слова Unit 4",
     subtitle: "relate, measure, friction…",
     cards: [
@@ -33,6 +35,7 @@ window.SETS = [
   },
   {
     id: "set2",
+    group: "КМ2",
     title: "Слова Unit 5",
     subtitle: "possess, tend, reveal…",
     cards: [
@@ -64,6 +67,7 @@ window.SETS = [
   },
   {
     id: "set3",
+    group: "КМ2",
     title: "Слова Unit 6",
     subtitle: "coil, inductor, relay…",
     cards: [
@@ -99,6 +103,123 @@ window.SETS = [
       { term: "as with", ru: "Как в случае с", extra: true },
       { term: "open-air contacts", ru: "Контакты, предназначенные для работы на открытом воздухе", extra: true },
       { term: "high-current application", ru: "Предназначенный для эксплуатации при больших токах", extra: true }
+    ]
+  },
+  {
+    id: "set4",
+    group: "КМ3",
+    title: "Слова Unit 7",
+    subtitle: "thermoelectric, power generator, decay product…",
+    cards: [
+      { term: "Thermoelectric", pos: "adj.", ru: "Термоэлектрический", ex: "The thermoelectric component of the heat flux flows from lower to higher temperatures." },
+      { term: "Power generator", pos: "n.", ru: "Электрогенератор", ex: "The synchronous three-stage power generator is the source of electrical energy." },
+      { term: "Solid-state device", pos: "n.", ru: "Полупроводниковый прибор; твердотельный прибор", ex: "Solid-state devices, such as a transistor, use conductors to control the flow of signals through a circuit." },
+      { term: "Heat sink (heatsink)", pos: "n.", ru: "Теплоотвод; система охлаждения; радиатор", ex: "Internal fans and heat sinks can help keep the machine cooled inside." },
+      { term: "Maintain at", pos: "v.", ru: "Сохраняться, поддерживаться (на уровне)", ex: "The temperature in the conference rooms is maintained at about 23 °C." },
+      { term: "Temperature differential", pos: "n.", ru: "Разность температур; перепад температур", ex: "As media flow increases across the sensing assembly, heat is dissipated and temperature differential decreases." },
+      { term: "Terminal", pos: "n.", ru: "Клемма; ввод/вывод", ex: "The positive and negative terminals of the tested device must be connected to produce a short circuit." },
+      { term: "Invoke", pos: "v.", ru: "Вызывать, запускать", ex: "You can also invoke the command completion by following the steps listed below." },
+      { term: "Pump", pos: "v.", ru: "Качать, перекачивать", ex: "Our latest machine can pump a hundred gallons a minute." },
+      { term: "Refrigeration", pos: "n.", ru: "Охлаждение", ex: "The food will spoil without refrigeration." },
+      { term: "Decay product", pos: "n.", ru: "Продукт распада", ex: "In nuclear physics, a decay product is a remaining nuclide left over from radioactive decay." },
+      { term: "Unattended", pos: "adj.", ru: "Автономный, автоматический", ex: "Unattended weather station recording (such as wind speed/direction, temperature, relative humidity, solar radiation) is used in the north pole." },
+      { term: "Data collection", pos: "n.", ru: "Сбор данных", ex: "The majority of data collection will be undertaken by their department." },
+      { term: "Spacecraft", pos: "n.", ru: "Космический корабль", ex: "The gravitational force experienced inside orbiting spacecraft is 10⁴–10⁶ g, and is commonly called «microgravity»." },
+      { term: "Power range", pos: "n.", ru: "Диапазон мощности", ex: "The power range is represented on the vertical axis." },
+      { term: "Conversion", pos: "n.", ru: "Конверсия, превращение", ex: "Nanoporous metal oxide materials have numerous potential applications in various areas, including conversion and storage." }
+    ]
+  },
+  {
+    id: "set5",
+    group: "КМ3",
+    title: "Слова Unit 8",
+    subtitle: "cogeneration, waste heat, off-the-shelf…",
+    cards: [
+      { term: "Cogeneration (= cogen = combined heat and power (CHP))", pos: "n.", ru: "Когенерация (совместное производство электроэнергии)", ex: "Biomass combustion for heat and the cogeneration of heat and power (CHP) is a commercial technology in the district heating systems." },
+      { term: "Steam", pos: "n.", ru: "Пар", ex: "If water is heated up to 100 °C it turns to steam." },
+      { term: "Concept", pos: "n.", ru: "Концепция, понятие, идея", ex: "It is very difficult to define the concept of beauty." },
+      { term: "Electric utility", pos: "n.", ru: "Электроэнергетическая компания (энергопредприятие)", ex: "Electric utilities are facing increasing demands including ageing infrastructure, reliability, and regulation." },
+      { term: "Utility company", pos: "n.", ru: "Коммунальная компания; коммунальная служба", ex: "Public Utility Company «Water and Sewerage» is obliged to provide potable water." },
+      { term: "Reliable", pos: "adj.", ru: "Надёжный", ex: "What is the most reliable method of calculation?" },
+      { term: "Waste heat", pos: "n.", ru: "Отработанное тепло", ex: "The fuel cell system also includes auxiliary components to remove waste heat." },
+      { term: "Facilities", pos: "n.", ru: "Оборудование, средства; возможности, аппаратура", ex: "New facilities should not be placed in areas of known risk, while older facilities may require adequate infrastructure protection or upgrading." },
+      { term: "Capture", pos: "v., n.", ru: "Захватывать, улавливать; захват, улавливание", ex: "The data is captured by an optical scanner." },
+      { term: "End-use", pos: "n.", ru: "Конечное использование (потребление)", ex: "Generally, in developing countries, end-use efficiency can be improved considerably using available technologies." },
+      { term: "Beneficial", pos: "adj.", ru: "Полезный, выгодный, положительный", ex: "These actions include both beneficial and detrimental effects." },
+      { term: "Environmental impact", pos: "n.", ru: "Воздействие на окружающую среду, последствия для окружающей среды", ex: "We need to be concerned about the environmental impacts of all this construction." },
+      { term: "Operating costs", pos: "n., usually plural", ru: "Эксплуатационные расходы, эксплуатационные затраты", ex: "Significant savings occurred in documents production, travel and operating costs." },
+      { term: "Off-the-shelf", pos: "adj.", ru: "Готовый, серийный", ex: "You can purchase off-the-shelf software or have it customized to suit your needs." },
+      { term: "Proven technology", pos: "n.", ru: "Апробированная технология; отработанная технология; проверенная технология", ex: "We can do it with proven technology." },
+      { term: "Large-scale", pos: "adj.", ru: "В крупном масштабе, крупномасштабный, массовый, широкий", ex: "They have announced large-scale changes in the organization." },
+      { term: "Implementation", pos: "n.", ru: "Осуществление, внедрение; применение", ex: "He summarized by saying we needed better planning and implementation." }
+    ]
+  },
+  {
+    id: "set6",
+    group: "КМ3",
+    title: "Слова Unit 9",
+    subtitle: "fission, fusion, chain reaction…",
+    cards: [
+      { term: "Nuclear", ipa: "[ˈnjuːklɪə]", pos: "adj.", ru: "Ядерный, атомный", ex: "The country had agreed to disable its main nuclear fuel production plant by the end of the year." },
+      { term: "Release", pos: "v.", ru: "Освобождать, высвобождать", ex: "Highly toxic dioxins were released into the air." },
+      { term: "Nucleus", pos: "n.", ru: "(pl. Nuclei) — ядро", ex: "This nucleus has captured the slow-moving neutrons." },
+      { term: "Fission", ipa: "[ˈfɪʃən]", pos: "n.", ru: "Деление, расщепление", ex: "Industrialized nations should increase their efforts in supporting energy efficiency, renewable energy, and nuclear fission." },
+      { term: "Fusion", ipa: "[ˈfjuːʒən]", pos: "n.", ru: "Слияние, сплав, объединение", ex: "The energy generation of the sun is based upon the thermonuclear fusion of hydrogen into helium." },
+      { term: "Split (apart)", pos: "v.", ru: "Расщеплять, раскалывать; разделять", ex: "German scientists have managed to split the atom, releasing 200 million volts." },
+      { term: "Neutron", ipa: "[ˈnjuːtrɒn]", pos: "n.", ru: "Нейтрон", ex: "Neutron was discovered by James Chadwick in 1932." },
+      { term: "Positively charged", pos: "adj.", ru: "Положительно заряженный", ex: "The nucleus contains positively charged protons and electrically neutral neutrons." },
+      { term: "Explosion", ipa: "[ɪkˈspləʊʒən]", pos: "n.", ru: "Взрыв", ex: "The fire was caused by a gas explosion." },
+      { term: "Chain reaction (nuclear reaction)", pos: "n.", ru: "Цепная реакция", ex: "Maybe this explosion triggered the chain reaction." },
+      { term: "Hydrogen", ipa: "[ˈhaɪdrədʒ(ə)n]", pos: "n.", ru: "Водород", ex: "Compressed hydrogen has an energy density of only 5.6 megajoules per liter." },
+      { term: "Uranium", ipa: "[jʊəˈreɪniəm]", pos: "n., adj.", ru: "Уран, урановый", ex: "Depleted uranium has the same chemical and physical properties as natural uranium." },
+      { term: "Isotope", ipa: "[ˈaɪsətəʊp]", pos: "n.", ru: "Изотоп", ex: "Even if you take a neutron away, leaving you with two protons and just one neutron, that isotope of helium is stable as well." },
+      { term: "Species", ipa: "[ˈspiːʃiːz]", pos: "n.", ru: "Вид, разновидность, класс", ex: "Many plant and animal species are found only in the rainforests." },
+      { term: "Break apart", pos: "v.", ru: "Разбить на составляющие; разъединить", ex: "The explosion caused the aircraft to break apart." }
+    ]
+  },
+  {
+    // Устойчивые выражения и сложные предлоги (Тема 4.3 + Unit 9, Grammar).
+    // Примеры для выражений из Темы 4.3 — из предложений методички (№1–40);
+    // для выражений Unit 9 — составные примеры.
+    id: "set7",
+    group: "КМ3",
+    title: "Устойчивые выражения",
+    subtitle: "as a matter of fact, owing to, provided…",
+    cards: [
+      { term: "As … as …", ru: "Так же … как …", ex: "Differential equations are used in mathematics as often as in physics." },
+      { term: "As a matter of fact / In fact", ru: "На самом деле, фактически", ex: "As a matter of fact, most of our knowledge of the atom nature has come from the work of physicists." },
+      { term: "As for …", ru: "Что касается …", ex: "As for the results of the experiment, they will be published next month." },
+      { term: "At least …", ru: "По крайней мере …", ex: "Our most accurate knowledge about climate sensitivity, at least so far, is based on empirical data from the earth's history." },
+      { term: "At any rate …", ru: "В любом случае, так или иначе …", ex: "At any rate, the first tests confirm the theory." },
+      { term: "But for …", ru: "Если бы не …", ex: "But for the atmosphere, no life would be possible on the Earth." },
+      { term: "By all means …", ru: "Во всех смыслах …; обязательно", ex: "Iron is by all means the most important metal." },
+      { term: "By no means …", ru: "Ни в коем случае …", ex: "By no means can this device be put into operation." },
+      { term: "Compared with …", ru: "По сравнению с …", ex: "Compared with copper, aluminium has a lower conductivity." },
+      { term: "Due to / Because of …", ru: "Из-за …, благодаря …", ex: "The molecules are held in position due to the rigidity of the crystal." },
+      { term: "In case …", ru: "В случае …", ex: "In case the charges are far enough apart, the electric field can be approximated as zero for practical purposes." },
+      { term: "In fact …", ru: "Фактически …", ex: "In fact, the diffraction phenomenon is very similar to the interference phenomenon." },
+      { term: "In one's turn …", ru: "В свою очередь …", ex: "Steam may be passed into an engine to produce mechanical energy. This, in its turn, may drive a dynamo." },
+      { term: "In order to …", ru: "Для того, чтобы …", ex: "In order to break this glass a great amount of force must be applied." },
+      { term: "In question …", ru: "Рассматриваемый …", ex: "A considerable amount of heat is radiated by the body in question." },
+      { term: "Owing to …", ru: "Вследствие, по причине, благодаря …", ex: "Electrolytes conduct the current owing to the presence of ions both positive and negative." },
+      { term: "Provided …", ru: "При условии, что …", ex: "A vehicle is considered a sounding rocket provided it rises above the atmosphere out to 4000 miles." },
+      { term: "That is …", ru: "То есть …", ex: "Iron is allotropic, that is, it exists in different forms." },
+      { term: "The only …", ru: "Единственный …", ex: "This is the only reasonable suggestion." },
+      { term: "The rest of …", ru: "Остаток чего-то …", ex: "The efficiency of the machine is 85 %, the rest of the power being lost in the resistance to friction." },
+      { term: "The … the …", ru: "Чем … тем …", ex: "The better the experimental technique, the more reliable are the results." },
+      { term: "To deal with …", ru: "Заниматься …, иметь дело с …, рассматривать …", ex: "The question of setting a unit of e.m.f. can be dealt with in the same way as for current." },
+      { term: "To refer to …", ru: "Ссылаться на …", ex: "When an electric charge in motion, it is referred to as an electric current." },
+      { term: "No matter what …", ru: "Независимо от того, что …", ex: "No matter what material the cathode may be made of, the electrons are always given off." },
+      { term: "According to …", ru: "Согласно, в соответствии с …", ex: "According to the Newton's second law, the motion of a body is changed as a result of its being acted upon by a force." },
+      { term: "Excluding …", ru: "Исключая, за исключением …", ex: "All the samples were tested, excluding the one kept at low temperature." },
+      { term: "(In) so far …", ru: "На данный момент (пока) …", ex: "(In) so far the device has shown no signs of wear." },
+      { term: "Just as …", ru: "Точно так же, как …; подобно тому, как …", ex: "Just as in mechanics, in thermodynamics the state of a system is described by several parameters." },
+      { term: "At the expense of …", ru: "За счёт, ценой …", ex: "The speed of the motor was increased at the expense of its torque." },
+      { term: "In spite of …", ru: "Несмотря на …", ex: "In spite of the high temperature the coating remained intact." },
+      { term: "On the contrary …", ru: "Напротив, в отличие от …", ex: "The new material did not lose strength; on the contrary, it became harder under load." },
+      { term: "Instead of …", ru: "Вместо того чтобы …", ex: "Instead of cooling the substance, we heated it." },
+      { term: "In addition to …", ru: "В дополнение к, вдобавок к …", ex: "In addition to its high conductivity, copper is easily workable." },
+      { term: "Notwithstanding …", ru: "Несмотря на, вопреки …", ex: "Notwithstanding the heat, the instrument worked accurately." }
     ]
   }
 ];
